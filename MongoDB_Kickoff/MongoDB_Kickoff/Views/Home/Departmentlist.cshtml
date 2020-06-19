@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MongoDB_Kickoff.Models.Department>
+
+@{
+    ViewBag.Title = "Departments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Departmentlist</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "AddDepartment")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentLead)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentLead)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditDepartment", new { id = item.DeptId }) |
+                @Html.ActionLink("Delete", "DeleteDepartment", new { id = item.DeptId })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
